@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pranav — Creative Designer & Visual Artist</title>
+  <meta name="description" content="Portfolio of Pranav — Creative Designer, AI Visual Artist, 3D Animator, and Video Editor." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=57" />
+</head>
+<body>
+
+  <!-- ═══════════════════════ LOADER ═══════════════════════ -->
+  <div class="loader" id="loader"><div class="loader__bar"></div></div>
+
+  <!-- ═══════════════════════ CURSOR GLOW ═══════════════════════ -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- ═══════════════════════ FIXED SEQUENTIAL FRAME CANVAS (No Bounding Box, No Circular Mask) ═══════════════════════ -->
+  <!-- Stays fixed across scroll, seamless dark blending with 0 container bounding box and 0 circular border -->
+  <div class="fixed-portrait-stage" id="fixedPortraitStage" aria-hidden="true">
+    <div class="fixed-portrait-wrap">
+      <canvas id="heroCanvas" class="hero-canvas" width="720" height="1280"></canvas>
+      
+      <!-- Live HUD Tag Overlay -->
+      <div class="fixed-portrait-hud" id="fixedPortraitHud">
+        <div class="hud-pill">
+          <span class="hud-dot"></span>
+          <span class="hud-frame" id="hudFrame">FRAME 001 // 287</span>
+        </div>
+        <div class="hud-pill hud-pill--progress">
+          <span id="hudProgress">0% SCROLL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+  <nav class="nav" id="nav">
+    <span class="nav__id">00 // PRANAV</span>
+    <div class="nav__center">
+      <span class="nav__pulse"></span>
+    </div>
+    <ul class="nav__links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav__menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ═══════════════════════ STICKY CANVAS HERO SECTION ═══════════════════════ -->
+  <section class="hero-track" id="hero">
+    <div class="hero-sticky">
+      
+      <div class="hero-sticky__inner">
+
+        <!-- Dynamic Overlay / Content Phases -->
+        <div class="hero-content-col">
+
+          <!-- Phase 1: Intro (Active at 0% - 35% scroll) -->
+          <div class="hero-phase hero-phase--active" id="heroPhase1">
+            <span class="mono-tag reveal visible">01 // CREATIVE DESIGNER &bull; AI VISUAL ARTIST</span>
+            <h1 class="hero__name">
+              PRANAV<span class="dot">.</span>
+            </h1>
+            <div class="hero__subtitle">
+              <p class="display-bold">Crafting bold visual experiences.</p>
+              <p class="serif-italic">Designing what moves.</p>
+            </div>
+            <p class="hero__bio">
+              Multidisciplinary creative working at the intersection of design,
+              generative AI, 3D craft, and cinematic editing. Scroll or scrub
+              to control the visual sequence.
+            </p>
+            <div class="hero__cta">
+              <a href="#projects" class="btn btn--outline">
+                Explore My Work
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#about" class="btn btn--ghost">About Me</a>
+            </div>
+          </div>
+
+          <!-- Phase 2: Disciplines (Active at 35% - 70% scroll) -->
+          <div class="hero-phase" id="heroPhase2">
+            <span class="mono-tag">01 // CORE CREATIVE DISCIPLINES</span>
+            <div class="hero-disciplines">
+              <div class="hero-disc-item">
+                <span class="hero-disc-num">01</span>
+                <div class="hero-disc-info">
+                  <span class="hero-disc-title">Generative AI Art</span>
+                  <span class="hero-disc-tech">Midjourney &bull; ComfyUI &bull; Stable Diffusion</span>
+                </div>
+              </div>
+              <div class="hero-disc-item">
+                <span class="hero-disc-num">02</span>
+                <div class="hero-disc-info">
+                  <span class="hero-disc-title">3D &amp; Spatial Motion</span>
+                  <span class="hero-disc-tech">Blender &bull; Cinema 4D &bull; Octane &bull; Houdini</span>
+                </div>
+              </div>
+              <div class="hero-disc-item">
+                <span class="hero-disc-num">03</span>
+                <div class="hero-disc-info">
+                  <span class="hero-disc-title">Cinematic Video Editing</span>
+                  <span class="hero-disc-tech">Premiere Pro &bull; DaVinci Resolve &bull; Sound Design</span>
+                </div>
+              </div>
+              <div class="hero-disc-item">
+                <span class="hero-disc-num">04</span>
+                <div class="hero-disc-info">
+                  <span class="hero-disc-title">Creative Direction</span>
+                  <span class="hero-disc-tech">Brand Identities &bull; Typographic Systems</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase 3: Transition Outro (Active at 70% - 100% scroll) -->
+          <div class="hero-phase" id="heroPhase3">
+            <span class="mono-tag">01 // VISUAL MASTERY</span>
+            <h2 class="hero-outro-title">
+              <span class="display-bold">PRECISION IN</span>
+              <em class="serif-accent">every frame<span class="dot">.</span></em>
+            </h2>
+            <p class="hero-outro-sub">
+              287 sequential frames of motion choreography. Continue scrolling
+              to dive into the narrative and selected project case studies.
+            </p>
+            <div class="hero-phase3-cue">
+              <a href="#about" class="btn btn--outline btn--sm">
+                Enter Journey
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Bottom Minimal Scroll Progress Bar -->
+      <div class="hero-progress-track" aria-hidden="true">
+        <div class="hero-progress-bar" id="heroProgressBar"></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+  <section class="about section-editorial" id="about">
+    <div class="editorial-container">
+      <!-- Scrolling content -->
+      <div class="editorial-scroll">
+        <span class="mono-tag reveal">02 // ABOUT</span>
+
+        <h2 class="section-title reveal" data-delay="0.1">
+          CREATIVE<br/>
+          <em class="serif-accent">in the making</em>
+        </h2>
+
+        <div class="about__text">
+          <p class="body-text reveal" data-delay="0.15">
+            I'm <strong>Pranav</strong> — a multidisciplinary creative who lives where design,
+            technology, and motion converge. With a deep passion for visual storytelling,
+            I blend generative AI, 3D craft, and cinematic editing into experiences
+            that captivate and provoke.
+          </p>
+          <p class="body-text reveal" data-delay="0.2">
+            From art-directing brand identities to composing AI-generated visual series
+            and sculpting immersive 3D environments, every project is a chance to
+            push creative boundaries. I believe in bold aesthetics, meticulous craft,
+            and ideas that leave a lasting mark.
+          </p>
+          <p class="body-text reveal" data-delay="0.25">
+            My work spans the full creative pipeline — concept, design, motion,
+            and final delivery — always with an obsessive eye for detail and
+            a hunger for what's next.
+          </p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid reveal" data-delay="0.3">
+          <div class="stat-card">
+            <span class="stat-card__number">50+</span>
+            <span class="stat-card__label">Projects Delivered</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number">5+</span>
+            <span class="stat-card__label">Years Creative Experience</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number">20+</span>
+            <span class="stat-card__label">Clients Worldwide</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number">15+</span>
+            <span class="stat-card__label">Tools & Platforms Mastered</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MAIN EDITORIAL LAYOUT: Content LEFT, Fixed Portrait RIGHT
+       Spans Skills → Projects → Achievements → Contact
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="editorial-container main-editorial-stream">
+
+    <!-- Scrolling content on the LEFT -->
+    <div class="editorial-scroll">
+
+      <!-- ─── SKILLS ─────────────────────────────────── -->
+      <section class="skills" id="skills">
+        <span class="mono-tag reveal">03 // SKILLS</span>
+
+        <h2 class="section-title reveal" data-delay="0.1">
+          TOOL<br/>
+          <em class="serif-accent">kit<span class="dot">.</span></em>
+        </h2>
+
+        <p class="body-text reveal" data-delay="0.15">
+          Full creative pipeline coverage — from generative AI and 3D environments
+          to cinematic post-production and brand identity systems.
+        </p>
+
+        <!-- Skill Rows -->
+        <div class="skill-rows">
+          <div class="skill-row reveal" data-delay="0.2">
+            <span class="skill-row__num">01</span>
+            <div class="skill-row__content">
+              <h3 class="skill-row__title">AI & Generative Art</h3>
+              <div class="skill-row__pills">
+                <span class="pill">Midjourney</span>
+                <span class="pill">Stable Diffusion</span>
+                <span class="pill">ComfyUI</span>
+                <span class="pill">DALL·E</span>
+                <span class="pill">Runway ML</span>
+                <span class="pill">Prompt Engineering</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-row reveal" data-delay="0.25">
+            <span class="skill-row__num">02</span>
+            <div class="skill-row__content">
+              <h3 class="skill-row__title">3D & Motion</h3>
+              <div class="skill-row__pills">
+                <span class="pill">Blender</span>
+                <span class="pill">Cinema 4D</span>
+                <span class="pill">Houdini</span>
+                <span class="pill">Unreal Engine</span>
+                <span class="pill">Octane Render</span>
+                <span class="pill">Redshift</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-row reveal" data-delay="0.3">
+            <span class="skill-row__num">03</span>
+            <div class="skill-row__content">
+              <h3 class="skill-row__title">Video & Post-Production</h3>
+              <div class="skill-row__pills">
+                <span class="pill">Premiere Pro</span>
+                <span class="pill">DaVinci Resolve</span>
+                <span class="pill">After Effects</span>
+                <span class="pill">Final Cut Pro</span>
+                <span class="pill">Sound Design</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-row reveal" data-delay="0.35">
+            <span class="skill-row__num">04</span>
+            <div class="skill-row__content">
+              <h3 class="skill-row__title">Design & Brand</h3>
+              <div class="skill-row__pills">
+                <span class="pill">Figma</span>
+                <span class="pill">Photoshop</span>
+                <span class="pill">Illustrator</span>
+                <span class="pill">InDesign</span>
+                <span class="pill">Typography</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-row reveal" data-delay="0.4">
+            <span class="skill-row__num">05</span>
+            <div class="skill-row__content">
+              <h3 class="skill-row__title">Creative Technology</h3>
+              <div class="skill-row__pills">
+                <span class="pill">TouchDesigner</span>
+                <span class="pill">Three.js</span>
+                <span class="pill">WebGL</span>
+                <span class="pill">Processing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Currently Drawn To -->
+        <div class="drawn-to reveal" data-delay="0.45">
+          <span class="drawn-to__label">Currently drawn to</span>
+          <div class="drawn-to__pills">
+            <span class="pill pill--glow">Real-time AI Generation</span>
+            <span class="pill pill--glow">Procedural 3D Worlds</span>
+            <span class="pill pill--glow">Cinematic Color Science</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ─── SELECTED PROJECTS ──────────────────────── -->
+      <section class="projects" id="projects">
+        <span class="mono-tag reveal">04 // SELECTED PROJECTS</span>
+
+        <h2 class="section-title reveal" data-delay="0.1">
+          SELECTED<br/>
+          <em class="serif-accent">works<span class="dot">.</span></em>
+        </h2>
+
+        <div class="project-stack">
+
+          <!-- ★ FEATURED PROJECT (Crimson gradient) -->
+          <article class="project-card project-card--featured reveal" data-delay="0.15">
+            <div class="project-card__header">
+              <span class="mono-tag mono-tag--sm">AI Visual Art</span>
+              <button class="project-card__link-btn" data-project="0" aria-label="View project">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </button>
+            </div>
+            <h3 class="project-card__title">Neon Dreamscape</h3>
+            <p class="project-card__desc">
+              AI-generated surreal landscape series exploring the boundary between
+              reality and imagination. Iterative prompt engineering fused with
+              post-production compositing to create otherworldly visual environments.
+            </p>
+            <div class="project-card__pills">
+              <span class="pill pill--sm">Midjourney</span>
+              <span class="pill pill--sm">Stable Diffusion</span>
+              <span class="pill pill--sm">Photoshop</span>
+              <span class="pill pill--sm">ComfyUI</span>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card reveal" data-delay="0.2">
+            <div class="project-card__header">
+              <span class="mono-tag mono-tag--sm">3D Animation</span>
+              <button class="project-card__link-btn" data-project="1" aria-label="View project">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </button>
+            </div>
+            <h3 class="project-card__title">Liquid Chrome</h3>
+            <p class="project-card__desc">
+              Seamlessly looping 3D animation of fluid chrome-like metallic forms.
+              Procedural shaders and physics-driven simulations achieving hyper-realistic
+              reflections and organic motion.
+            </p>
+            <div class="project-card__pills">
+              <span class="pill pill--sm">Blender</span>
+              <span class="pill pill--sm">Houdini</span>
+              <span class="pill pill--sm">After Effects</span>
+              <span class="pill pill--sm">Octane</span>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card reveal" data-delay="0.25">
+            <div class="project-card__header">
+              <span class="mono-tag mono-tag--sm">Video Editing</span>
+              <button class="project-card__link-btn" data-project="2" aria-label="View project">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </button>
+            </div>
+            <h3 class="project-card__title">Rhythm &amp; Flow</h3>
+            <p class="project-card__desc">
+              Dynamic music video edit with beat-synced cuts, stylized color grading,
+              and kinetic typography. The edit rhythm mirrors the track's energy,
+              blending narrative and abstract visual motifs.
+            </p>
+            <div class="project-card__pills">
+              <span class="pill pill--sm">Premiere Pro</span>
+              <span class="pill pill--sm">DaVinci Resolve</span>
+              <span class="pill pill--sm">After Effects</span>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card reveal" data-delay="0.3">
+            <div class="project-card__header">
+              <span class="mono-tag mono-tag--sm">Creative Design</span>
+              <button class="project-card__link-btn" data-project="3" aria-label="View project">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </button>
+            </div>
+            <h3 class="project-card__title">Brand Forge</h3>
+            <p class="project-card__desc">
+              Complete brand identity system — logo, type system, color palette,
+              and application across digital and print — designed for a future-forward
+              creative technology startup.
+            </p>
+            <div class="project-card__pills">
+              <span class="pill pill--sm">Figma</span>
+              <span class="pill pill--sm">Illustrator</span>
+              <span class="pill pill--sm">Photoshop</span>
+              <span class="pill pill--sm">InDesign</span>
+            </div>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="project-card reveal" data-delay="0.35">
+            <div class="project-card__header">
+              <span class="mono-tag mono-tag--sm">AI Visual Art</span>
+              <button class="project-card__link-btn" data-project="4" aria-label="View project">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </button>
+            </div>
+            <h3 class="project-card__title">Synthetic Portraits</h3>
+            <p class="project-card__desc">
+              AI-enhanced editorial portrait series merging machine-generated textures
+              with photography. Themes of identity, digital self, and the blurring
+              line between human and computational creativity.
+            </p>
+            <div class="project-card__pills">
+              <span class="pill pill--sm">Stable Diffusion</span>
+              <span class="pill pill--sm">ComfyUI</span>
+              <span class="pill pill--sm">Photoshop</span>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="project-card reveal" data-delay="0.4">
+            <div class="project-card__header">
+              <span class="mono-tag mono-tag--sm">3D Animation</span>
+              <button class="project-card__link-btn" data-project="5" aria-label="View project">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </button>
+            </div>
+            <h3 class="project-card__title">Abstract Spaces</h3>
+            <p class="project-card__desc">
+              Immersive 3D walkthrough of an abstract architectural space with
+              impossible geometry and atmospheric volumetric lighting. Designed
+              as a meditative visual experience.
+            </p>
+            <div class="project-card__pills">
+              <span class="pill pill--sm">Cinema 4D</span>
+              <span class="pill pill--sm">Octane Render</span>
+              <span class="pill pill--sm">After Effects</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+
+      <!-- ─── ACHIEVEMENTS ───────────────────────────── -->
+      <section class="achievements">
+        <div class="achievements__bg" aria-hidden="true">
+          <span>ACHIEVEMENTS</span>
+          <span>ACHIEVEMENTS</span>
+          <span>ACHIEVEMENTS</span>
+        </div>
+
+        <div class="achievements__cards">
+          <div class="achievement-card reveal" data-delay="0.1">
+            <span class="achievement-card__label">Featured Artist</span>
+            <span class="achievement-card__source">Digital Design Awards 2026</span>
+          </div>
+          <div class="achievement-card reveal" data-delay="0.15">
+            <span class="achievement-card__label">Winner</span>
+            <span class="achievement-card__source">AI Art Global Competition</span>
+          </div>
+          <div class="achievement-card reveal" data-delay="0.2">
+            <span class="achievement-card__label">Best Motion</span>
+            <span class="achievement-card__source">Indie Film Festival 2025</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ─── CONTACT ────────────────────────────────── -->
+      <section class="contact" id="contact">
+        <span class="mono-tag reveal">07 // CONTACT</span>
+
+        <h2 class="contact__headline">
+          <span class="display-bold reveal" data-delay="0.1">HAVE AN IDEA?</span>
+          <em class="serif-accent reveal" data-delay="0.2">Let's create something</em>
+          <span class="display-bold reveal" data-delay="0.3">EXTRAORDINARY<span class="dot">.</span></span>
+        </h2>
+
+        <div class="contact__body">
+          <div class="contact__email-block reveal" data-delay="0.35">
+            <span class="contact__email-label">Write to me</span>
+            <div class="contact__email-row">
+              <a href="mailto:hello@pranav.design" class="contact__email">hello@pranav.design</a>
+              <button class="btn btn--outline btn--sm" id="copyEmail">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copy Address
+              </button>
+            </div>
+          </div>
+
+          <div class="contact__socials reveal" data-delay="0.4">
+            <a href="#" class="btn btn--outline btn--sm">
+              LinkedIn
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+            <a href="#" class="btn btn--outline btn--sm">
+              Instagram
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+            <a href="#" class="btn btn--outline btn--sm">
+              Behance
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+            <a href="#" class="btn btn--outline btn--sm">
+              GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /editorial-scroll -->
+  </div><!-- /editorial-container -->
+
+
+  <!-- ═══════════════════════ PROJECT DETAIL MODAL ═══════════════════════ -->
+  <div class="modal" id="projectModal" aria-hidden="true" role="dialog">
+    <div class="modal__backdrop" id="modalBackdrop"></div>
+    <div class="modal__dialog">
+      <button class="modal__close" id="modalClose" aria-label="Close modal">&times;</button>
+      <div class="modal__grid">
+        <div class="modal__media">
+          <div class="modal__media-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span id="modalMediaLabel">Project Preview</span>
+          </div>
+        </div>
+        <div class="modal__content">
+          <span class="mono-tag mono-tag--sm" id="modalTag">04 // CATEGORY</span>
+          <h3 class="modal__title" id="modalTitle">Project Title</h3>
+          <p class="modal__desc" id="modalDesc">Detailed description of the project.</p>
+          
+          <div class="modal__meta">
+            <div class="modal__meta-item">
+              <span class="modal__meta-label">Role</span>
+              <span class="modal__meta-val" id="modalRole">Lead Artist &amp; Animator</span>
+            </div>
+            <div class="modal__meta-item">
+              <span class="modal__meta-label">Tools</span>
+              <span class="modal__meta-val" id="modalTools">Blender, After Effects</span>
+            </div>
+            <div class="modal__meta-item">
+              <span class="modal__meta-label">Year</span>
+              <span class="modal__meta-val" id="modalYear">2026</span>
+            </div>
+          </div>
+
+          <div class="modal__actions">
+            <a href="#" class="btn btn--outline btn--sm" id="modalActionLink">
+              Launch Showcase
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+  <footer class="footer">
+    <span>&copy; 2026 PRANAV &bull; DESIGNED &amp; BUILT WITH OBSESSION</span>
+    <span class="footer__link">pranav.design</span>
+  </footer>
+
+  <script src="main.js?v=57"></script>
+</body>
+</html>
